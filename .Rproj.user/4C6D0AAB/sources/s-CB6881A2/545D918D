@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1526561782817.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "545D918D",
+    "lastKnownWriteTime" : 1526561895,
+    "last_content_update" : 1526561895718,
+    "path" : "~/knight-federal-solutions/GDB_DataReview_Tutorials/11-metadatExport.Rmd",
+    "project_path" : "11-metadatExport.Rmd",
+    "properties" : {
+        "cursorPosition" : "8,303",
+        "scrollLine" : "5"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
