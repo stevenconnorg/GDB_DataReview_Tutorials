@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="GDB_DataReview ArcMap Toolbox Tutorials" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="How to use the ArcMap GDB_DataReview Toolbox." />
+
+
+<meta name="author" content="Steven C. Gonzalez &amp; Marie C. Cline" />
+<meta name="author" content="Air Force Civil Engineering Center (AFCEC)" />
+<meta name="author" content="Geospatial Integration Office (GIO)" />
+
+<meta name="date" content="2018-05-18" />
+
+
+<meta name="description" content="How to use the ArcMap GDB_DataReview Toolbox.">
+
+<title>GDB_DataReview ArcMap Toolbox Tutorials</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="#overview"><span class="toc-section-number">1</span> Toolbox Overview</a></li>
+<li><a href="#opening-the-toolbox"><span class="toc-section-number">2</span> Opening the Toolbox</a></li>
+<li class="has-sub"><a href="#xCIP"><span class="toc-section-number">3</span> Extract CIP Geodatabase using XML Workspace Schema</a><ul>
+<li><a href="#overview"><span class="toc-section-number">3.1</span> Overview</a></li>
+<li><a href="#parameters"><span class="toc-section-number">3.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use"><span class="toc-section-number">3.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox"><span class="toc-section-number">3.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters"><span class="toc-section-number">3.3.2</span> Fill out the parameters</a></li>
+</ul></li>
+<li><a href="#run-the-tool-and-view-results"><span class="toc-section-number">3.4</span> Run the Tool and View Results</a></li>
+</ul></li>
+<li class="has-sub"><a href="#siteData"><span class="toc-section-number">4</span> Create Site Features</a><ul>
+<li><a href="#overview-1"><span class="toc-section-number">4.1</span> Overview</a></li>
+<li><a href="#parameters-1"><span class="toc-section-number">4.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-1"><span class="toc-section-number">4.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-1"><span class="toc-section-number">4.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-1"><span class="toc-section-number">4.3.2</span> Fill out the parameters</a></li>
+<li><a href="#run-the-tool-and-view-results-1"><span class="toc-section-number">4.3.3</span> Run the Tool and View Results</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="#joinCalc"><span class="toc-section-number">5</span> Join Fields and Calculate</a><ul>
+<li><a href="#overview-2"><span class="toc-section-number">5.1</span> Overview</a></li>
+<li><a href="#parameters-2"><span class="toc-section-number">5.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-2"><span class="toc-section-number">5.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-2"><span class="toc-section-number">5.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-2"><span class="toc-section-number">5.3.2</span> Fill out the parameters</a></li>
+<li><a href="#run-the-tool-and-view-results-2"><span class="toc-section-number">5.3.3</span> Run the Tool and View Results</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="#spatjoinCalc"><span class="toc-section-number">6</span> Spatial Join and Calculate Field</a><ul>
+<li><a href="#overview-3"><span class="toc-section-number">6.1</span> Overview</a></li>
+<li><a href="#parameters-3"><span class="toc-section-number">6.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-3"><span class="toc-section-number">6.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-3"><span class="toc-section-number">6.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-3"><span class="toc-section-number">6.3.2</span> Fill out the parameters</a></li>
+</ul></li>
+<li><a href="#run-the-tool-and-view-results-3"><span class="toc-section-number">6.4</span> Run the Tool and View Results</a></li>
+</ul></li>
+<li class="has-sub"><a href="#dupGeom"><span class="toc-section-number">7</span> Find Duplicate Geometries</a><ul>
+<li><a href="#overview-4"><span class="toc-section-number">7.1</span> Overview</a></li>
+<li><a href="#parameters-4"><span class="toc-section-number">7.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-4"><span class="toc-section-number">7.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-4"><span class="toc-section-number">7.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-4"><span class="toc-section-number">7.3.2</span> Fill out the parameters</a></li>
+</ul></li>
+<li><a href="#run-the-tool-and-view-results-4"><span class="toc-section-number">7.4</span> Run the Tool and View Results</a></li>
+</ul></li>
+<li class="has-sub"><a href="#chkGeom"><span class="toc-section-number">8</span> Check and/or Repair Geometries</a><ul>
+<li><a href="#overview-5"><span class="toc-section-number">8.1</span> Overview</a></li>
+<li><a href="#parameters-5"><span class="toc-section-number">8.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-5"><span class="toc-section-number">8.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-5"><span class="toc-section-number">8.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-5"><span class="toc-section-number">8.3.2</span> Fill out the parameters</a></li>
+<li><a href="#run-the-tool-and-view-results-5"><span class="toc-section-number">8.3.3</span> Run the Tool and View Results</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="#delFeats"><span class="toc-section-number">9</span> Delete Duplicate Features</a><ul>
+<li><a href="#overview-6"><span class="toc-section-number">9.1</span> Overview</a></li>
+<li><a href="#parameters-6"><span class="toc-section-number">9.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-6"><span class="toc-section-number">9.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-6"><span class="toc-section-number">9.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-6"><span class="toc-section-number">9.3.2</span> Fill out the parameters</a></li>
+<li><a href="#run-the-tool-and-view-results-6"><span class="toc-section-number">9.3.3</span> Run the Tool and View Results</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="#stdAdd1"><span class="toc-section-number">10</span> Standardize 1 Address Field</a><ul>
+<li><a href="#overview-7"><span class="toc-section-number">10.1</span> Overview</a></li>
+<li><a href="#parameters-7"><span class="toc-section-number">10.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-7"><span class="toc-section-number">10.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-7"><span class="toc-section-number">10.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-7"><span class="toc-section-number">10.3.2</span> Fill out the parameters</a></li>
+<li><a href="#run-the-tool-and-view-results-7"><span class="toc-section-number">10.3.3</span> Run the Tool and View Results</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="#std3"><span class="toc-section-number">11</span> Standardize Road Prefix, Name, and Suffix Fields</a><ul>
+<li><a href="#overview-8"><span class="toc-section-number">11.1</span> Overview</a></li>
+<li><a href="#parameters-8"><span class="toc-section-number">11.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-8"><span class="toc-section-number">11.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-8"><span class="toc-section-number">11.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-8"><span class="toc-section-number">11.3.2</span> Fill out the parameters</a></li>
+</ul></li>
+<li><a href="#run-the-tool-and-view-results-8"><span class="toc-section-number">11.4</span> Run the Tool and View Results</a></li>
+</ul></li>
+<li class="has-sub"><a href="#indtSearch"><span class="toc-section-number">12</span> Search for Missing and Indeterminant Data</a><ul>
+<li><a href="#overview-9"><span class="toc-section-number">12.1</span> Overview</a></li>
+<li><a href="#parameters-9"><span class="toc-section-number">12.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-9"><span class="toc-section-number">12.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-9"><span class="toc-section-number">12.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-9"><span class="toc-section-number">12.3.2</span> Fill out the parameters</a></li>
+</ul></li>
+<li><a href="#run-the-tool-and-view-results-9"><span class="toc-section-number">12.4</span> Run the Tool and View Results</a></li>
+</ul></li>
+<li class="has-sub"><a href="#summIndt"><span class="toc-section-number">13</span> Summarise Indeterminant/Missing Data Tables</a><ul>
+<li><a href="#overview-10"><span class="toc-section-number">13.1</span> Overview</a></li>
+<li><a href="#parameters-10"><span class="toc-section-number">13.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-10"><span class="toc-section-number">13.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-10"><span class="toc-section-number">13.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-10"><span class="toc-section-number">13.3.2</span> Fill out the parameters</a></li>
+</ul></li>
+<li><a href="#run-the-tool-and-view-results-10"><span class="toc-section-number">13.4</span> Run the Tool and View Results</a></li>
+</ul></li>
+<li class="has-sub"><a href="#exMeta"><span class="toc-section-number">14</span> Batch Export XML Metadata to Directory</a><ul>
+<li><a href="#overview-11"><span class="toc-section-number">14.1</span> Overview</a></li>
+<li><a href="#parameters-11"><span class="toc-section-number">14.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-11"><span class="toc-section-number">14.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-11"><span class="toc-section-number">14.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-11"><span class="toc-section-number">14.3.2</span> Fill out the parameters</a></li>
+</ul></li>
+<li><a href="#run-the-tool-and-view-results-11"><span class="toc-section-number">14.4</span> Run the Tool and View Results</a></li>
+</ul></li>
+<li class="has-sub"><a href="#imMeta"><span class="toc-section-number">15</span> Batch Import Metadata to GDB Features from XML Metadata Directory</a><ul>
+<li><a href="#overview-12"><span class="toc-section-number">15.1</span> Overview</a></li>
+<li><a href="#parameters-12"><span class="toc-section-number">15.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-12"><span class="toc-section-number">15.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-12"><span class="toc-section-number">15.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-12"><span class="toc-section-number">15.3.2</span> Fill out the parameters</a></li>
+</ul></li>
+<li><a href="#run-the-tool-and-view-results-12"><span class="toc-section-number">15.4</span> Run the Tool and View Results</a></li>
+</ul></li>
+<li class="has-sub"><a href="#imMetaGDB"><span class="toc-section-number">16</span> Batch Import Metadata to GDB Features from GDB</a><ul>
+<li><a href="#overview-13"><span class="toc-section-number">16.1</span> Overview</a></li>
+<li><a href="#parameters-13"><span class="toc-section-number">16.2</span> Parameters</a></li>
+<li class="has-sub"><a href="#how-to-use-13"><span class="toc-section-number">16.3</span> How to Use</a><ul>
+<li><a href="#begin-by-opening-the-toolbox-13"><span class="toc-section-number">16.3.1</span> Begin by opening the toolbox</a></li>
+<li><a href="#fill-out-the-parameters-13"><span class="toc-section-number">16.3.2</span> Fill out the parameters</a></li>
+</ul></li>
+<li><a href="#run-the-tool-and-view-results-13"><span class="toc-section-number">16.4</span> Run the Tool and View Results</a></li>
+</ul></li>
+<li><a href="#prodInfo"><span class="toc-section-number">17</span> Production Information</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="header">
+<h1 class="title">GDB_DataReview ArcMap Toolbox Tutorials</h1>
+<h4 class="author"><em>Steven C. Gonzalez &amp; Marie C. Cline</em></h4>
+<h4 class="author"><em>Air Force Civil Engineering Center (AFCEC)</em></h4>
+<h4 class="author"><em>Geospatial Integration Office (GIO)</em></h4>
+<h4 class="date"><em>2018-05-18</em></h4>
+</div>
+<div id="overview" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Toolbox Overview</h1>
+<p>This document gives an overview of how to use the GDB_DataReview ArcMap Toolbox.</p>
+<p>The GDB_DataReview ArcMap Toolbox provides numerous Python script tools to expedite the review of geodatabases in comparison with a template geodatabase model. This toolbox was developed to aid Air Force (AF) installations in maintaining geospatial data in compliance with the current Air Force Data Model (GeoBase 3.1.0.1) developed under the <a href="https://www.sdsfieonline.org/Components/USAF">AF GeoBase mission</a>.</p>
+<p>The GeoBase 3.1.0.1 data model is based upon the <a href="https://www.sdsfieonline.org/">Spatial Data Standards for Facilities, Infrastructure, and Environment (SDSFIE)</a> SDSFIE-V 3.1 Gold model, which complies with the Department of Defense Instruction (DoDI) 8130.01, <em>Installation Geospatial Information and Service</em> (IGI&amp;S), but allows some greater flexibility within the program to aid the AF mission. As part of the IGI&amp;S program, this toolbox also aids in standardizing methods to adhere to the Fiscal Year 2017 CIP data call required by DoDI 8130.01.</p>
+<p>The GDB_DataReview Toolbox provides methods to:</p>
+<ul>
+<li>Update feature class data using both <a href="#joinCalc">tabular</a> and <a href="#spatjoinCalc">spatial</a> joins,</li>
+<li>Find <a href="#dupGeom">duplicate geometries</a>, delete <a href="#dupFeats">duplicate features</a>, and <a href="#chkGeom">check/repair</a> feature geometries,</li>
+<li>Standardize <a href="#std3">road prefixes, names and suffixes</a> or <a href="#stdAdd1">building addresses</a>,</li>
+<li><a href="#indtSearch">Search for</a> and <a href="#summIndt">summarize</a> indeterminant and missing data in a geodatabase when compared with a template geodatabase</li>
+<li>Batch <a href="#exMeta">exporting</a> and <a href="#imMeta">importing</a> geodatabase metadata</li>
+</ul>
+</div>
+<div id="opening-the-toolbox" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Opening the Toolbox</h1>
+<p>In order to access this toolbox, open ArcCatalog (or the ArcCatalog window within ArcMap). Within the ‘Catalog Tree’ windowpane in ArcCatalog, click the Folder Connections folder and navigate to the location of the toolbox. You may need to add a folder connection by right clicking ‘Folder Connections’ and clicking ‘Connect to Folder.’ Then navigate to the folder with the toolbox within the newly connected folder. Then, you can click the plus sign by the toolbox to view the tools within it (Fig. <a href="#fig:opentoolbox">2.1</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:opentoolbox"></span>
+<img src="figures/opentoolbox.jpg" alt="Opening the Create Site Data tool" width="246"  />
+<p class="caption">
+Figure 2.1: Opening the Create Site Data tool
+</p>
+</div>
+<p></p>
+
+</div>
+<div id="xCIP" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Extract CIP Geodatabase using XML Workspace Schema</h1>
+<div id="overview" class="section level2">
+<h2><span class="header-section-number">3.1</span> Overview</h2>
+<p>This tool allows users to extract the Common Installation Picture (CIP) data with the proper schema from a source geodatabase. This tool uses an AFCEC GeoBase provided XML document to ensure the correct geodatabase schema is created.</p>
+</div>
+<div id="parameters" class="section level2">
+<h2><span class="header-section-number">3.2</span> Parameters</h2>
+<p>The tool has 4 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Source Geodatabase (data type: Workspace/File Geodatabase)</strong> - The input geodatabase to extract CIP data from.</li>
+<li><strong>Output Geodatabase Name (data type: String)</strong> - The name for the output geodatabase; exclude extension type.</li>
+<li><strong>Output location (data type: Folder)</strong> - The location where the output geodatabase will be created.</li>
+<li><strong>Geodatabase XML Workspace Schema (Template Schema) (data type: File)</strong> - This file is provided by AFCEC GeoBase and is located where the user chooses to save it.</li>
+</ol>
+</div>
+<div id="how-to-use" class="section level2">
+<h2><span class="header-section-number">3.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Extract CIP with XML’ script tool to open (Fig. <a href="#fig:xCIPopen">3.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:xCIPopen"></span>
+<img src="figures/xCIP-open.jpg" alt="Opening the Extract CIP Geodatabase using XML Workspace Schema tool" width="162"  />
+<p class="caption">
+Figure 3.1: Opening the Extract CIP Geodatabase using XML Workspace Schema tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we are using a source geodatabase which contains an installations full dataset. Next, we state the name of the output geodatabase containing the CIP data and where we want that geodatabase to be saved. Lastly, we point to the location where we saved the provided XML document (Fig. <a href="#fig:xCIPparams">3.2</a>).
+<div class="figure" style="text-align: center"><span id="fig:xCIPparams"></span>
+<img src="figures/xCIP-after.jpg" alt="Extract CIP Geodatabase using XML Workspace Schema tool parameters" width="402"  />
+<p class="caption">
+Figure 3.2: Extract CIP Geodatabase using XML Workspace Schema tool parameters
+</p>
+</div>
+</div>
+</div>
+<div id="run-the-tool-and-view-results" class="section level2">
+<h2><span class="header-section-number">3.4</span> Run the Tool and View Results</h2>
+While the tool runs, we can see which feature dataset and feature classes are being processed, number of features being appended to the corresponding feature class in the new geodatabase, if a feature class is empty, and if the Real Property unique identifier field is properly named in the source data (Fig. <a href="#fig:xCIPmessages">3.3</a>).
+<div class="figure" style="text-align: center"><span id="fig:xCIPmessages"></span>
+<img src="figures/xCIP-messages.jpg" alt="Extract CIP Geodatabase using XML Workspace Schema tool messages" width="487"  />
+<p class="caption">
+Figure 3.3: Extract CIP Geodatabase using XML Workspace Schema tool messages
+</p>
+</div>
+<p>After running the tool, the new CIP geodatabase is available for use in the location where it was saved (i.e.: [Output location] / [Output name]). Here, since we specified the output location to be the ‘Yaeger_ReviewCopy’ folder in the ‘CIP Processing’ directory on the user’s desktop with the output name ‘Yaeger_CIP,’ the new geodatabase will be found at “C:\Users\[username]\Desktop\Yaeger_CIP.gdb”</p>
+
+</div>
+</div>
+<div id="siteData" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Create Site Features</h1>
+<div id="overview-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> Overview</h2>
+<p>The Create Site Features tool allows users to use the Cadastre dataset’s Installation_A, Site_A, and Site_P feature classes to populate and update site data as needed.</p>
+<p>This tool compares the geometry of Installation_A data (required to be populated) to Site_A data and populates features where needed. Upon the update of Site_A, points are created in Site_P for each feature in Site_A if they do not exist.</p>
+<p>The user has the option to bypass the geometry compare between Installation_A and Site_A. When bypassed, no features are added to Site_A and site points are created using data that already exists in Site_A.</p>
+</div>
+<div id="parameters-1" class="section level2">
+<h2><span class="header-section-number">4.2</span> Parameters</h2>
+<p>The tool has 3 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Input_Geodatabase (data type: Workspace)</strong> - This parameter must be the path of the input geodatabase to search Feature Datasets’ Feature Class features for duplicate features.<br />
+</li>
+<li><strong>Bypass Installation_A and Site_A Geometry Compare (data type: Boolean)</strong> - This parameter is a check box that is unchecked by default. If the user checks the box, the geometry compare between Installation_A and Site_A will be bypassed.</li>
+<li><strong>Installation_A &amp; Site_A Geometry Compare Type (data type: String Value List)</strong> - How do you want to limit the spatial join? By default, this parameter is set to “HAVE THEIR CENTER IN,” in order to only update target features that have their center in the source features. This parameter may be changed to any of the following values, as specified in the <a href="http://desktop.arcgis.com/en/arcmap/latest/tools/data-management-toolbox/select-layer-by-location.htm">SelectByLocation_management tool documentation</a>:
+<ul>
+<li><em>INTERSECT</em> —The features in the input layer will be selected if they intersect a selecting feature. This is the default.<br />
+</li>
+<li><em>INTERSECT_3D</em> —The features in the input layer will be selected if they intersect a selecting feature in three-dimensional space (x, y, and z).<br />
+</li>
+<li><em>WITHIN_A_DISTANCE</em> —The features in the input layer will be selected if they are within a specified distance of a selecting feature. Specify a distance in the Search Distance parameter.<br />
+</li>
+<li><em>WITHIN_A_DISTANCE_3D</em> —The features in the input layer will be selected if they are within a specified distance of a selecting feature in three-dimensional space. Specify a distance in the Search Distance parameter.<br />
+</li>
+<li><em>WITHIN_A_DISTANCE_GEODESIC</em> —The features in the input layer will be selected if they are within a specified distance of a selecting feature. Distance between features will be calculated using a geodesic method which takes into account the curvature of the earth and correctly deals with data near and across the dateline and poles.<br />
+</li>
+<li><em>CONTAINS</em> —The features in the input layer will be selected if they contain a selecting feature.<br />
+</li>
+<li><em>COMPLETELY_CONTAINS</em> —The features in the input layer will be selected if they completely contain a selecting feature.<br />
+</li>
+<li><em>CONTAINS_CLEMENTINI</em> —This spatial relationship yields the same results as COMPLETELY_CONTAINS with the following exception: if the selecting feature is entirely on the boundary of the input feature (no part is properly inside or outside), the feature will not be selected. Clementini defines the boundary polygon as the line separating inside and outside, the boundary of a line is defined as its end points, and the boundary of a point is always empty.<br />
+</li>
+<li><em>WITHIN</em> —The features in the input layer will be selected if they are within a selecting feature.<br />
+</li>
+<li><em>COMPLETELY_WITHIN</em> — The features in the input layer will be selected if they are completely within or contained by a selecting feature.<br />
+</li>
+<li><em>WITHIN_CLEMENTINI</em> — The result will be identical to WITHIN with the exception that if the entirety of the feature in the input layer is on the boundary of the feature in the selecting layer, the feature will not be selected. Clementini defines the boundary polygon as the line separating inside and outside, the boundary of a line is defined as its end points, and the boundary of a point is always empty.<br />
+</li>
+<li><em>ARE_IDENTICAL_TO</em> — The features in the input layer will be selected if they are identical (in geometry) to a selecting feature.</li>
+</ul></li>
+</ol>
+</div>
+<div id="how-to-use-1" class="section level2">
+<h2><span class="header-section-number">4.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-1" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Create Site Features’ script tool to open (Fig. <a href="#fig:csdopen">4.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:csdopen"></span>
+<img src="figures/csd-open.JPG" alt="Opening the Create Site Features tool" width="160"  />
+<p class="caption">
+Figure 4.1: Opening the Create Site Features tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-1" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to select the Cadastre feature dataset for the geodatabase being processed. (Fig. <a href="#fig:csdparams">4.2</a>). Last, we specify where we want to output the resulting tables, prefereably in an Installation Review geodatabase specifically for holding CIP processing results.<br />
+
+<div class="figure" style="text-align: center"><span id="fig:csdparams"></span>
+<img src="figures/csd-params.jpg" alt="Create Site Features Tool parameters" width="352"  />
+<p class="caption">
+Figure 4.2: Create Site Features Tool parameters
+</p>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-1" class="section level3">
+<h3><span class="header-section-number">4.3.3</span> Run the Tool and View Results</h3>
+While the tool runs (with Background Processing disabled), we can see messages and warnings from the tool. Warnings are provided if required feature classes are missing or data verification from the user is suggested. Messages include the number of features added to Site_A and the number of points added to Site_P (Fig. <a href="#fig:delFmessages">9.3</a>). Here, we see that an Installation_A feature exists beyond the boundaries of the Site_A features so 1 feature is appended to Site_A. Then, 8 site points were created for the empty Site_P feature class.
+<div class="figure" style="text-align: center"><span id="fig:csdmessages"></span>
+<img src="figures/csd-messages.jpg" alt="Create Site Features tool messages" width="487"  />
+<p class="caption">
+Figure 4.3: Create Site Features tool messages
+</p>
+</div>
+After running the tool, we can see the Site_P and Site_A features are created properly, where previously missed (Fig. <a href="#fig:csdbefore">4.4</a> &amp; Fig. <a href="#fig:csdafter">4.5</a>).
+<div class="figure" style="text-align: center"><span id="fig:csdbefore"></span>
+<img src="figures/csd-before.jpg" alt="Before running the tool" width="455"  />
+<p class="caption">
+Figure 4.4: Before running the tool
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:csdafter"></span>
+<img src="figures/csd-after.jpg" alt="Newly created Site A and Site P features after running the tool" width="470"  />
+<p class="caption">
+Figure 4.5: Newly created Site A and Site P features after running the tool
+</p>
+</div>
+
+</div>
+</div>
+</div>
+<div id="joinCalc" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Join Fields and Calculate</h1>
+<div id="overview-2" class="section level2">
+<h2><span class="header-section-number">5.1</span> Overview</h2>
+<p>The ArcGIS Python Script Tool “Join Fields and Calculate” may be used to update the destination values in a target feature layer field with the values in another table’s fields using a common key (join). This script will perform similarly as if you joined a table to a feature class to calculate a certain field based on another field in the joined table.</p>
+</div>
+<div id="parameters-2" class="section level2">
+<h2><span class="header-section-number">5.2</span> Parameters</h2>
+<p>The tool has 11 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Transfer_From (data type: Table View)</strong> - Which table are do you want to transfer data from? This parameter must be the path to a table(e.g.: Comma-separated Values (.csv) file, Excel Workbook (.xlsx) Sheet, Esri geodatabase table, etc.). This table will act as ‘source’ data.</p></li>
+<li><p><strong>Using_Join_Field (data type: Field)</strong> - From the source table, which field should be used to joinwith another feature class’ attributes? This will provide the ‘key’ to transfer data from the source table to the target table.</p></li>
+<li><p><strong>Source_Field (data type: Field)</strong> - From the source table, which field’s data do you want to transfer to the target table? This field’s data will be updated in the target feature class that have matching fields.</p></li>
+<li><p><strong>Destination_Feature (data type: Feature Layer or Feature Class)</strong> - Which feature class do you want to transfer data to? This parameter must be the path to a Esri Feature Class or Feature Layer. This table will act as ‘target’ data source.</p></li>
+<li><p><strong>Destination_Join_Field (data type: Field)</strong> - From the target table, which field should be used to joinwith another feature class’ attributes? This will provide the ‘key’ to transfer data from the source table to the target table.</p></li>
+<li><p><strong>Destination_Field (data type: Field)</strong> - From the target table, which field’s data do you want to transfer from the source table? This field’s data will be updated from the source table that have matching fields using the join fields provided.</p></li>
+<li><p><strong>Where_Clause (data type: String)</strong> - How should the source values be filtered? Default is “IS NOT NULL”, otherwise you will overwrite the target features will null values.</p></li>
+<li><p><strong>Remove_Leading_Zeros? (data type: Boolean)</strong> - Do you want to remove leading zeros from the Source Join Field prior to ‘joining’ the tables?</p></li>
+<li><p><strong>Remove_Blank_Spaces? (data type: Boolean)</strong> - Do you want to remove leading blank spaces from the Source Join Field prior to ‘joining’ the tables?</p></li>
+<li><p><strong>Source RPSUID Field (data type: Field)</strong> - Which field in the source table holds the Real Property Site Unique ID values? This field acts as a second join “key” to ensure that the correct Real Property Unique IDs are joined for each unique Site (i.e.: RPSUID).</p></li>
+<li><p><strong>Update RPSUID Field (data type: Field)</strong> - Which field in the Destination Feature holds the Real Property Site Unique ID values? This field acts as a second join “key” to ensure that the correct Real Property Unique IDs are joined for each unique Site (i.e.: RPSUID).</p></li>
+</ol>
+</div>
+<div id="how-to-use-2" class="section level2">
+<h2><span class="header-section-number">5.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-2" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Begin by opening the toolbox</h3>
+<p>Navigate to the location of the script tool, then right-click the ‘Join Fields and Calculate’ script tool to open (Fig. <a href="#fig:jcopen">5.1</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:jcopen"></span>
+<img src="figures/joinCalcopentool.jpg" alt="Opening the Tool" width="221"  />
+<p class="caption">
+Figure 5.1: Opening the Tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-2" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> Fill out the parameters</h3>
+<p>Next, fill out the parameters for the tool. Here, we want to transfer the RPUID attributes (source field) from the ‘RPSUID_and_RPUID.csv’ table (transfer from) using the ‘FacilityNumber’ join field (Using_Join_Field) to the Building_A feature layer’s (Destination Feature) ‘realPropertyUniqueID’ field (Destination_Field) using the ‘buildingNumber’ field (Destination_Join_Field) (Fig. <a href="#fig:jcparams">5.2</a>).</p>
+<p>We also keep the default value in the ‘Where Clause’ parameter of ‘IS NOT NULL,’ in order to transfer RPUID from the source table where RPUIDs are not null, <strong>otherwise you may overwrite the target features will null values</strong> (Fig. <a href="#fig:jcparams">5.2</a>).</p>
+<p>We noticed that the ‘buildingNumber’ field has some leading zeros that we want to remove the beginning of the values, so we click the “Remove Leading Zeros” toggle (Fig. <a href="#fig:jcparams">5.2</a>). If you noticed that the ‘Destination Join Field’ values have leading spaces, you can also check the ‘Remove_Leading_Zeros’ parameter to remove these spaces.</p>
+<div class="figure" style="text-align: center"><span id="fig:jcparams"></span>
+<img src="figures/joinCalc-toolparams.jpg" alt="Tool parameters" width="497"  />
+<p class="caption">
+Figure 5.2: Tool parameters
+</p>
+</div>
+<p>Alternatively, you may also run this tool in ‘batch’ for multiple features in a geodatabase or geodatabases (Fig. <a href="#fig:batch">5.3</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:batch"></span>
+<img src="figures/joinCalc-batch.jpg" alt="Running a tool in batch" width="238"  />
+<p class="caption">
+Figure 5.3: Running a tool in batch
+</p>
+</div>
+<p>You may also get more information for the tool and each tool parameter by clicking the ‘Tool Help’ button at the bottom of the tool dialog box.</p>
+</div>
+<div id="run-the-tool-and-view-results-2" class="section level3">
+<h3><span class="header-section-number">5.3.3</span> Run the Tool and View Results</h3>
+<p>Open the destinate Feature Class and view the update destination field values (Fig. <a href="#fig:jcbefore">5.4</a>, Fig. <a href="#fig:jcafter">5.5</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:jcbefore"></span>
+<img src="figures/joinCalc-before.jpg" alt="Attribues before running the Join Fields and Calculate tool" width="317"  />
+<p class="caption">
+Figure 5.4: Attribues before running the Join Fields and Calculate tool
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:jcafter"></span>
+<img src="figures/joinCalc-results.jpg" alt="Attributes after running the tool, matching against both Building Number and RPSUID to update RPUID values" width="330"  />
+<p class="caption">
+Figure 5.5: Attributes after running the tool, matching against both Building Number and RPSUID to update RPUID values
+</p>
+</div>
+
+</div>
+</div>
+</div>
+<div id="spatjoinCalc" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Spatial Join and Calculate Field</h1>
+<div id="overview-3" class="section level2">
+<h2><span class="header-section-number">6.1</span> Overview</h2>
+<p>This tool utilizes spatial joins to update field values in the target Feature Classes field to equal the source Feature Class fields in a source geodatabase. Using ‘wildcard’ fitlers, this tool allows users to update particular target Feature Datasets, Feature Classes, and Fields. For the purposes of this tool within the scope of the CIP Data Review task, target Fields are, by default, any fields that begin with “realPropertySiteUnique,” in order to udpate RPSUID fields called either “realPropertySiteUniqueIdentifier” or “realPropertySiteUniqueID”; however, this tool could be extended to any number of source/target Feature Class/Field values.</p>
+</div>
+<div id="parameters-3" class="section level2">
+<h2><span class="header-section-number">6.2</span> Parameters</h2>
+<p>The tool has 8 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Update Geodatabase (data type: Workspace/File Geodatabase)</strong> - The path to the input geodatabase to update Feature Classes in.</p></li>
+<li><p><strong>Source Feature (data type: Feature Class)</strong> - The path to the source Feature Class, which will be used to update Feature Class fields in target Feature Classes.</p></li>
+<li><p><strong>Source_Field (data type: Field)</strong> - The field within the source Feature Class used to update values in target Feature Classes.</p></li>
+<li><p><strong>Target Feature Dataset Wildcard (data type: String)</strong> - Within the input geodatabase, do you want to update only certain Feature Datasets? Use this wildcard to filter input geodatabase Feature Datasets. The Default is ‘*’ for ‘All Feature Datasets,’ but if you only wanted to update the Feature Classes in the ‘Auditory’ Feature Dataset, set this parameter to ‘Auditory.’ Similarly, if you only wanted to update Feature Classes within environmental Feature Datasets, set this parameter to ’environmental*‘, which will loop through all Feature Classes within Feature Datasets that start with ’environmental.’</p></li>
+<li><p><strong>Target Feature Class Wildcard (data type: String)</strong> - Within the input geodatabase, do you want to update only certain Feature Classes? Use this wildcard to filter input geodatabase Feature Classes to update. The Default is ‘*’ for ‘All Feature Classes,’ but if you only wanted to update Feature Classes called “roadCenterline_L”, set this parameter to ‘roadCenterline_L.’ Similarly, if you only wanted to update Feature Classes that begin with “road,” set this parameter to ’road*‘, which will loop through all Feature Classes that start with ’road.’</p></li>
+<li><p><strong>Target Field Wildcard (data type: String)</strong> - This parameter is used to filter fields within the target Feature Classes that you want to update with the Source Feature Classes source Field. For the purposes of this tool within the scope of the CIP Data Review, this parameter is automatically set to “realPropertySiteUnique*&quot; in order to ‘catch’ all RPSUID fields within the SDSFIE 3.101 data model, where certain fields are called “realPropertySiteUniqueIdentifier” and others are called “realPropertySiteUniqueID.”</p></li>
+<li><strong>Overlap Type (data type: String)</strong> - How do you want to limit the spatial join? By default, this parameter is set to “within,” in order to only update target features that are completely within the source features. This parameter may be changed to any of the following values, as specified in the <a href="http://desktop.arcgis.com/en/arcmap/latest/tools/data-management-toolbox/select-layer-by-location.htm">SelectByLocation_management tool documentation</a>:
+<ul>
+<li><em>INTERSECT</em> —The features in the input layer will be selected if they intersect a selecting feature. This is the default.<br />
+</li>
+<li><em>INTERSECT_3D</em> —The features in the input layer will be selected if they intersect a selecting feature in three-dimensional space (x, y, and z).<br />
+</li>
+<li><em>WITHIN_A_DISTANCE</em> —The features in the input layer will be selected if they are within a specified distance of a selecting feature. Specify a distance in the Search Distance parameter.<br />
+</li>
+<li><em>WITHIN_A_DISTANCE_3D</em> —The features in the input layer will be selected if they are within a specified distance of a selecting feature in three-dimensional space. Specify a distance in the Search Distance parameter.<br />
+</li>
+<li><em>WITHIN_A_DISTANCE_GEODESIC</em> —The features in the input layer will be selected if they are within a specified distance of a selecting feature. Distance between features will be calculated using a geodesic method which takes into account the curvature of the earth and correctly deals with data near and across the dateline and poles.<br />
+</li>
+<li><em>CONTAINS</em> —The features in the input layer will be selected if they contain a selecting feature.<br />
+</li>
+<li><em>COMPLETELY_CONTAINS</em> —The features in the input layer will be selected if they completely contain a selecting feature.<br />
+</li>
+<li><em>CONTAINS_CLEMENTINI</em> —This spatial relationship yields the same results as COMPLETELY_CONTAINS with the following exception: if the selecting feature is entirely on the boundary of the input feature (no part is properly inside or outside), the feature will not be selected. Clementini defines the boundary polygon as the line separating inside and outside, the boundary of a line is defined as its end points, and the boundary of a point is always empty.<br />
+</li>
+<li><em>WITHIN</em> —The features in the input layer will be selected if they are within a selecting feature.<br />
+</li>
+<li><em>COMPLETELY_WITHIN</em> — The features in the input layer will be selected if they are completely within or contained by a selecting feature.<br />
+</li>
+<li><em>WITHIN_CLEMENTINI</em> — The result will be identical to WITHIN with the exception that if the entirety of the feature in the input layer is on the boundary of the feature in the selecting layer, the feature will not be selected. Clementini defines the boundary polygon as the line separating inside and outside, the boundary of a line is defined as its end points, and the boundary of a point is always empty.<br />
+</li>
+<li><em>ARE_IDENTICAL_TO</em> — The features in the input layer will be selected if they are identical (in geometry) to a selecting feature.<br />
+</li>
+<li><em>BOUNDARY_TOUCHES</em> — The features in the input layer will be selected if they have a boundary that touches a selecting feature. When the inputs features are lines or polygons, the boundary of the input feature can only touch the boundary of the selecting feature, and no part of the input feature can cross the boundary of the selecting feature.<br />
+</li>
+<li><em>SHARE_A_LINE_SEGMENT_WITH</em> — The features in the input layer will be selected if they share a line segment with a selecting feature. The input and selecting features must be line or polygon.<br />
+</li>
+<li><em>CROSSED_BY_THE_OUTLINE_OF</em> — The features in the input layer will be selected if they are crossed by the outline of a selecting feature. The input and selecting features must be lines or polygons. If polygons are used for the input or selecting layer, the polygon’s boundary (line) will be used. Lines that cross at a point will be selected, not lines that share a line segment.<br />
+</li>
+<li><em>HAVE_THEIR_CENTER_IN</em> — The features in the input layer will be selected if their center falls within a selecting feature. The center of the feature is calculated as follows: for polygon and multipoint, the geometry’s centroid is used, and for line input, the geometry’s midpoint is used.<br />
+</li>
+</ul></li>
+<li><p><strong>Search Distance (data type: String)</strong> - You must provide a numeric value for the Search Distance parameter if f the overlap type parameter is equal to: “WITHIN_A_DISTANCE_GEODESIC”, “WITHIN_A_DISTANCE”, “WITHIN_A_DISTANCE_3D”, “INTERSECT”, “INTERSECT_3D”, “HAVE_THEIR_CENTER_IN”, “CONTAINS”, or “WITHIN”.</p></li>
+</ol>
+</div>
+<div id="how-to-use-3" class="section level2">
+<h2><span class="header-section-number">6.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-3" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Begin by opening the toolbox</h3>
+<p>Navigate to the location of the script tool, then right-click the ‘Calculate Feature RPSUIDs from Overlapping Polygon’ script tool to open (Fig. <a href="#fig:sjcopentool">6.1</a>).</p>
+<div class="figure" style="text-align: right"><span id="fig:sjcopentool"></span>
+<img src="figures/spatjoinCalcopentool.jpg" alt="Opening the toolbox" width="202"  />
+<p class="caption">
+Figure 6.1: Opening the toolbox
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-3" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> Fill out the parameters</h3>
+For this demostration, we want to update missing RPSUID values for 2 features in the Site_P Feature Class using RPSUID values from Site_A features that contain Site_P features <a href="#fig:sjcbefore">6.2</a>).
+<div class="figure" style="text-align: center"><span id="fig:sjcbefore"></span>
+<img src="figures/spatjoinCalc-before.jpg" alt="Missing RPSUID attributes for Site Point features" width="357"  />
+<p class="caption">
+Figure 6.2: Missing RPSUID attributes for Site Point features
+</p>
+</div>
+Next, fill out the parameters for the tool. Here, we want to transfer the RPSUID attributes (Source Field) from the Site_A Feature Class in the Cadastre Feature Dataset (Fig. <a href="#fig:sjcparams">6.3</a>).
+<div class="figure" style="text-align: center"><span id="fig:sjcparams"></span>
+<img src="figures/spatjoinCalc-toolparams.jpg" alt="Tool parameters" width="392"  />
+<p class="caption">
+Figure 6.3: Tool parameters
+</p>
+</div>
+<p>Since we only want to update the Site_P features within the Cadastre Feature Dataset, we change the default value for the Target Feature Dataset Wildcard to “Cadastre,” since we know that the Site_P Feature Class is only found within the Cadastre Feature Dataset. Further, we change the default value of the Target Feature Class Wildcard parameters to “Site_P” in order to only update Site_P features within the Cadastre Dataset. Since we know that the RPSUID field names within all Feature Classes in the data model begin with ‘realPropertySiteUnique’, we can keep the default value for the Target Field Wildcard parameter in order to update the realPropertySiteUniqueID field in Site_P features with with the Source Field in the Source Feature Class. For the purposes of this demostration, we keep the default value for the Overlap Type parameter to “WITHIN,” in order to update the fields that begin with “realPropertySiteUnique” for features that are <em>within</em> each Source Feature Class feature. You may also get more information for the tool and each tool parameter by clicking the ‘Tool Help’ button at the bottom of the tool dialog box.</p>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-3" class="section level2">
+<h2><span class="header-section-number">6.4</span> Run the Tool and View Results</h2>
+If running the tool with Background Processessing disabled, we can see which RPSUIDs are being updated (Fig. <a href="#fig:sjcmessages">6.4</a>).
+<div class="figure" style="text-align: center"><span id="fig:sjcmessages"></span>
+<img src="figures/spatjoinCalc-toolmessages.jpg" alt="Tool parameters" width="386"  />
+<p class="caption">
+Figure 6.4: Tool parameters
+</p>
+</div>
+After the tool has run, we see that the 2 Site_P features with missing RPSUID values are updated accordingly <a href="#fig:sjcafter">6.5</a>).
+<div class="figure" style="text-align: center"><span id="fig:sjcafter"></span>
+<img src="figures/spatjoinCalc-after.jpg" alt="AFter running the tool, new Site A feaures and new Site P features are created." width="223"  />
+<p class="caption">
+Figure 6.5: AFter running the tool, new Site A feaures and new Site P features are created.
+</p>
+</div>
+
+</div>
+</div>
+<div id="dupGeom" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Find Duplicate Geometries</h1>
+<div id="overview-4" class="section level2">
+<h2><span class="header-section-number">7.1</span> Overview</h2>
+<p>The Find Duplicate Geometries tool allows users to search an entire geodatabase’s Feature Classes within Feature Datasets for features with duplicate geometries. This tool loops through each Feature Dataset’s Feature Class features and searches for duplicate geometries.</p>
+<p>All features with duplicate geometries are written to the output .csv file, as specified, and describes the Feature Dataset and Feature Class with duplicate geometries, the OBJECTIDs of the duplicate geometries, and a summary, which gives the count of duplicate geometries spread over unique geometries. Further, this tool creates layer files for each Feature Class’ duplicate features, <em>allowing users to edit their geodatabase directory from a temporary, filtered layer of only duplicate features to be evaluated further, instead of arbitrarily deleting duplicated features without further consideration.</em></p>
+</div>
+<div id="parameters-4" class="section level2">
+<h2><span class="header-section-number">7.2</span> Parameters</h2>
+<p>The tool has 5 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Input_Geodatabase (data type: Workspace)</strong> - This parameter must be the path of the input geodatabase to search Feature Datasets’ Feature Class features for duplicate geometries.<br />
+</li>
+<li><strong>XY_Tolerance (data type: String)</strong> - The XY_Tolerance parameter will be applied to each vertex when evaluating if there is an identical vertex in another entity, and must be input in the same units as the the source geodatabase’s coordinate reference system (CRS).</li>
+<li><strong>Z_Tolerance (data type: String)</strong> - The Z_Tolerance parameter will be applied to each vertex when evaluating if there is an identical vertex in another entity with regard to elevation, and must be input in the same units as the the source geodatabase’s coordinate reference system (CRS).</li>
+<li><strong>Output_CSV (data type: File)</strong> - The path to the output Duplicate_Geometry_Summary .xlsx/.csv file.</li>
+<li><strong>Output_Layers_Directory (data type: Folder)</strong> - The path to the directory/folder to store layer files with duplicate geometries.</li>
+</ol>
+</div>
+<div id="how-to-use-4" class="section level2">
+<h2><span class="header-section-number">7.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-4" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Find Duplicate Geometries’ script tool to open (Fig. <a href="#fig:dupGopen">7.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:dupGopen"></span>
+<img src="figures/dupG-opentool.jpg" alt="Opening the Find Duplicate Geometries tool" width="195"  />
+<p class="caption">
+Figure 7.1: Opening the Find Duplicate Geometries tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-4" class="section level3">
+<h3><span class="header-section-number">7.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to search all Feature Classes within Feature Datasets in the Example.gdb for duplicate geometries using the default XY Tolerance and Z Tolerance values of ‘0’ (Fig. <a href="#fig:dupGparams">7.2</a>). We specify that we want the Duplicate Geometry Summary to be written to a Comma-separated Values (.csv) file called ‘test.csv.’ Further, we specify that we want all the duplicate Feature Class feature layers to be saved to the Output Layers Directory ‘layer.’
+<div class="figure" style="text-align: center"><span id="fig:dupGparams"></span>
+<img src="figures/dupG-params.jpg" alt="Find Duplicate Geometries parameters" width="394"  />
+<p class="caption">
+Figure 7.2: Find Duplicate Geometries parameters
+</p>
+</div>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-4" class="section level2">
+<h2><span class="header-section-number">7.4</span> Run the Tool and View Results</h2>
+While the tool runs (with Background Processing disabled), we can see the messages from the tool, showing how many duplicate features are found for each Feature Class (Fig. <a href="#fig:dupGmessages">7.3</a>).
+<div class="figure" style="text-align: center"><span id="fig:dupGmessages"></span>
+<img src="figures/dupG-messages.jpg" alt="Messages from the Find Duplicate Geometries tool" width="376"  />
+<p class="caption">
+Figure 7.3: Messages from the Find Duplicate Geometries tool
+</p>
+</div>
+After the tool has run, we can open the output .csv we specified in the tool parameters to examine which Feature Classes have duplicated geometries . For example, we find that the EnvRestorSampLoc_P Feature Class within the environmentalRestoration Feature Dataset has 17 total duplicates spread across 7 unique geometries (Fig. <a href="#fig:dupGcsv">7.4</a>).
+<div class="figure" style="text-align: center"><span id="fig:dupGcsv"></span>
+<img src="figures/dupG-csv.JPG" alt="Find Duplicate Geometries parameters" width="461"  />
+<p class="caption">
+Figure 7.4: Find Duplicate Geometries parameters
+</p>
+</div>
+Navigating to the output layer directory we specified in the tool, we find layer files with duplicate features for each Feature Class (Fig. <a href="#fig:dupGlays">7.5</a>).
+<div class="figure" style="text-align: center"><span id="fig:dupGlays"></span>
+<img src="figures/dupG-lays.jpg" alt="Find Duplicate Geometries parameters" width="172"  />
+<p class="caption">
+Figure 7.5: Find Duplicate Geometries parameters
+</p>
+</div>
+After pulling in the _dupeGeom_EnvRestorSampLoc_P layer file, we can zoom to a feature and select the features at that location to examine the duplicate features at that location (Fig. <a href="#fig:layFeats">7.6</a>).
+<div class="figure" style="text-align: center"><span id="fig:layFeats"></span>
+<img src="figures/dupG-layFeats.jpg" alt="The features with duplicated geometries" width="440"  />
+<p class="caption">
+Figure 7.6: The features with duplicated geometries
+</p>
+</div>
+Then, we can view the Attribute Table for the selected features to examine which feature we should amend or delete (Fig. <a href="#fig:layAtts">7.7</a>). Here, we find that the attributes are exactly the same for the first duplicated geometry, and so we should probably delete one of these features. Editing the layer files directly will update the associated Feature Classes in the original geodatabase.
+<div class="figure" style="text-align: center"><span id="fig:layAtts"></span>
+<img src="figures/dupG-layAtts.jpg" alt="Examining the attributes of duplicated features from layer files" width="460"  />
+<p class="caption">
+Figure 7.7: Examining the attributes of duplicated features from layer files
+</p>
+</div>
+
+</div>
+</div>
+<div id="chkGeom" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Check and/or Repair Geometries</h1>
+<div id="overview-5" class="section level2">
+<h2><span class="header-section-number">8.1</span> Overview</h2>
+<p>The Check and/or Repair Geometries tool allows users to search an entire geodatabase’s Feature Classes for geometry problems. This tool loops through each Feature Dataset’s Feature Class features and searches for geometry problems, including null geometry, self intersections, duplicate vertexes, and more.</p>
+<p>If geometry problems exists, an output table is created containing the following fields: CLASS, FEATURE_ID, and PROBLEM. The feature classes which contain geometry problems are then repaired.</p>
+<p>After the repair is conducted, the subset of feature classes with repaired geometry problems are checked again for geometry problems to confirm their repair. Another output table is generated for the subset of feature classes. An empty output table confirms the geometry problems were correctly repaired.</p>
+</div>
+<div id="parameters-5" class="section level2">
+<h2><span class="header-section-number">8.2</span> Parameters</h2>
+<p>The tool has 2 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Input_Geodatabase (data type: Workspace)</strong> - This parameter must be the path of the input geodatabase to search Feature Datasets’ Feature Class features for duplicate features.</li>
+<li><strong>Output_Geodatabase (data type: Workspace)</strong> - This parameter should be the path of the Installation Review Geodatabase to compile all CIP processing outputs in a single location.</li>
+<li><strong>Repair Geometries? (data type: Boolean)</strong> - Do you want to automatically repair geometries, where possible?</li>
+<li><strong>Delete Null Geometries? (data type: Boolean)</strong> - Do you want to automatically delete features that have null/empty geometries?</li>
+</ol>
+</div>
+<div id="how-to-use-5" class="section level2">
+<h2><span class="header-section-number">8.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-5" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Check and/or Repair Geometry’ script tool to open (Fig. <a href="#fig:chkGopen">8.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:chkGopen"></span>
+<img src="figures/chkG-open.jpg" alt="Opening the Check and/or Repair Geometries tool" width="161"  />
+<p class="caption">
+Figure 8.1: Opening the Check and/or Repair Geometries tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-5" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to search all Feature Classes within Feature Datasets in the Example.gdb for duplicate features (Fig. <a href="#fig:chkGparams">8.2</a>). Lastly, we specify where we want to output the resulting tables, prefereably in an Installation Review geodatabase specifically for holding CIP processing results.<br />
+
+<div class="figure" style="text-align: center"><span id="fig:chkGparams"></span>
+<img src="figures/chkG-params.jpg" alt="Check and/or Repair Geometries tool parameters" width="497"  />
+<p class="caption">
+Figure 8.2: Check and/or Repair Geometries tool parameters
+</p>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-5" class="section level3">
+<h3><span class="header-section-number">8.3.3</span> Run the Tool and View Results</h3>
+While the tool runs (with Background Processing disabled), we can see the messages from the tool, which displays the following: how many feature classes are being checked for geometry problems, how many geometry problems that were found, where the output results are found, how many and which feature classes will be processed to repair geometry problems, how many feature classes are being re-checked for geometry errors, and how many geometry problems were found after the re-check (Fig. <a href="#fig:chkGmessages">8.3</a>).
+<div class="figure" style="text-align: center"><span id="fig:chkGmessages"></span>
+<img src="figures/chkG-messages.jpg" alt="Output messages from the Check and/or Repair Geometries tool" width="487"  />
+<p class="caption">
+Figure 8.3: Output messages from the Check and/or Repair Geometries tool
+</p>
+</div>
+Here, we see that 16 geometry problems were found in the Yaeger CIP geodatabase across 10 different feature classes, with each listed. A re-check was conducted on the 10 feature classes and then 0 geometry problems were found (Fig. <a href="#fig:chkGafter">8.4</a>).
+<div class="figure" style="text-align: center"><span id="fig:chkGafter"></span>
+<img src="figures/chkG-after.jpg" alt="Output table of duplicate geometries found for each Feature Class, with the re-run showing that all geometries have been fixed." width="457"  />
+<p class="caption">
+Figure 8.4: Output table of duplicate geometries found for each Feature Class, with the re-run showing that all geometries have been fixed.
+</p>
+</div>
+
+</div>
+</div>
+</div>
+<div id="delFeats" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Delete Duplicate Features</h1>
+<div id="overview-6" class="section level2">
+<h2><span class="header-section-number">9.1</span> Overview</h2>
+<p>The Delete Duplicate Features tool allows users to search an entire geodatabase’s Feature Classes for duplicated features This tool loops through each Feature Dataset’s Feature Class features and searches for duplicate features, <strong>not including geometry.</strong> That is, this tool searches for features within each feature class that have the same attributes across all fields in the attribute table, not including the fields listed below in the ‘Note’ section.</p>
+
+<div class="warnh1">
+Note
+</div>
+ 
+<div class="warnp">
+<p>By default, this tool does not consider compare attributes in across any fields that are ‘OID’, ‘Guid’, ‘GlobalID’, ‘Blob’, or ‘Raster’ field types. Furthmore, the following fields are ignored in searching for duplicate features, by default (not case sensitive): ‘LAST_EDITED_DATE’, ‘LAST_EDITED_USER’, ‘CREATED_USER’, ‘CREATED_DATE’. As stated previously, this tool does not include geometries in the feature comparisons by default.</p>
+</div>
+
+</div>
+<div id="parameters-6" class="section level2">
+<h2><span class="header-section-number">9.2</span> Parameters</h2>
+<p>The tool has 3 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Input_Geodatabase (data type: Workspace)</strong> - This parameter must be the path of the input geodatabase to search Feature Datasets’ Feature Class features for duplicate features.</li>
+<li><strong>XY_Tolerance (data type: String)</strong> - The XY_Tolerance parameter will be applied to each vertex when evaluating if there is an identical vertex in another entity, and must be input in the same units as the the source geodatabase’s coordinate reference system (CRS).</li>
+<li><strong>Z_Tolerance (data type: String)</strong> - The Z_Tolerance parameter will be applied to each vertex when evaluating if there is an identical vertex in another entity with regard to elevation, and must be input in the same units as the the source geodatabase’s coordinate reference system (CRS).</li>
+</ol>
+</div>
+<div id="how-to-use-6" class="section level2">
+<h2><span class="header-section-number">9.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-6" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Delete Duplicate Features’ script tool to open (Fig. <a href="#fig:delFopen">9.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:delFopen"></span>
+<img src="figures/delF-opentool.jpg" alt="Opening the Delete Duplicate Features tool" width="201"  />
+<p class="caption">
+Figure 9.1: Opening the Delete Duplicate Features tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-6" class="section level3">
+<h3><span class="header-section-number">9.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to search all Feature Classes within Feature Datasets in the Example.gdb for duplicate features (Fig. <a href="#fig:delFparams">9.2</a>). We specify that we want to keep the default XY Tolerance and Z Tolerance parameters to zero, though this could be increased to allow duplicate geometry checks to be more lenient.
+<div class="figure" style="text-align: center"><span id="fig:delFparams"></span>
+<img src="figures/delF-params.jpg" alt="Delete Duplicate Features parameters" width="80%"  />
+<p class="caption">
+Figure 9.2: Delete Duplicate Features parameters
+</p>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-6" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> Run the Tool and View Results</h3>
+While the tool runs (with Background Processing disabled), we can see the messages from the tool, which displays how many duplicate features will be deleted across each feature class, if applicable (Fig. <a href="#fig:delFmessages">9.3</a>). Here, we see that 102 duplicates were found in the MilFlightTrack_L feature class across 51 unique features, indicating that each of the 51 features may have been duplicated once (51 x 2 = 102).
+<div class="figure" style="text-align: center"><span id="fig:delFmessages"></span>
+<img src="figures/delF-messages.jpg" alt="Delete Duplicate Features messages" width="370"  />
+<p class="caption">
+Figure 9.3: Delete Duplicate Features messages
+</p>
+</div>
+
+</div>
+</div>
+</div>
+<div id="stdAdd1" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Standardize 1 Address Field</h1>
+<div id="overview-7" class="section level2">
+<h2><span class="header-section-number">10.1</span> Overview</h2>
+<p>The Standardize Address Field tool allows users to standardize 1 address field in a feature class. This tool works by searching the address field within the input feature class, then replaces any street prefixes (e.g.: North, north, East, West) with a standard prefix abbreviation (i.e.: “N”, “S”, “E”, and “W”), while all suffixes (e.g.: AVE, Avenue, Street) are reformatted to <a href="https://github.com/allanbreyes/udacity-data-science/blob/master/p2/data/suffixes.csv">standard USPS suffixes</a>.</p>
+</div>
+<div id="parameters-7" class="section level2">
+<h2><span class="header-section-number">10.2</span> Parameters</h2>
+<p>The tool has 2 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Feature Class (data type: Feature Class )</strong> - The path to the Feature Class with the address field to standardize.</li>
+<li><strong>Field (data type: Field)</strong> - The address field in the Feature Class to be standardized.</li>
+</ol>
+</div>
+<div id="how-to-use-7" class="section level2">
+<h2><span class="header-section-number">10.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-7" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Standardize 1 Address Field’ script tool to open (Fig. <a href="#fig:std1open">10.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:std1open"></span>
+<img src="figures/std1-opentool.jpg" alt="Opening the Standardize Address Field tool" width="196"  />
+<p class="caption">
+Figure 10.1: Opening the Standardize Address Field tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-7" class="section level3">
+<h3><span class="header-section-number">10.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to update the buildingAddress field in the Building_A Feature Class in the Example.gdb (Fig. <a href="#fig:std1params">10.2</a>) because we notice none standardized addresses in the field (Fig. <a href="#fig:std1before">10.3</a>).
+<div class="figure" style="text-align: center"><span id="fig:std1params"></span>
+<img src="figures/std1-toolparams.jpg" alt="Tool parameters to run" width="238"  />
+<p class="caption">
+Figure 10.2: Tool parameters to run
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:std1before"></span>
+<img src="figures/std1-before.jpg" alt="The unstandardized address field attributes before running the tool." width="102"  />
+<p class="caption">
+Figure 10.3: The unstandardized address field attributes before running the tool.
+</p>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-7" class="section level3">
+<h3><span class="header-section-number">10.3.3</span> Run the Tool and View Results</h3>
+After the tool has run, we can see that the building address values have been appropriately standardized (Fig. <a href="#fig:std1after">10.4</a>).
+<div class="figure" style="text-align: center"><span id="fig:std1after"></span>
+<img src="figures/std1-after.jpg" alt="The standardized address field attributes after running the tool." width="74"  />
+<p class="caption">
+Figure 10.4: The standardized address field attributes after running the tool.
+</p>
+</div>
+
+</div>
+</div>
+</div>
+<div id="std3" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Standardize Road Prefix, Name, and Suffix Fields</h1>
+<div id="overview-8" class="section level2">
+<h2><span class="header-section-number">11.1</span> Overview</h2>
+<p>The purpose of this tool is to standardize the 3 field (road prefix, road name, and road suffix) values within a feature class. This tool works by first searching the ROADNAME field within that feature class, then removes any prefixes or suffixes within the field and moves them to the appropriate field. For all prefixes and suffixes found, the prefixes are reformatted to “N”, “S”, “E”, and “W.” For all suffixes found, the suffixes are reformatted to <a href="https://github.com/allanbreyes/udacity-data-science/blob/master/p2/data/suffixes.csv">standard USPS suffixes</a>.</p>
+</div>
+<div id="parameters-8" class="section level2">
+<h2><span class="header-section-number">11.2</span> Parameters</h2>
+<p>The tool has 4 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Road Feature Class (data type: Feature Class)</strong> - This parameter must be the path to the Feature Class that has the 3 road fields to be standardized.</li>
+<li><strong>Prefix Field (data type: Field)</strong> - The field within the feature class that has or should have road prefixes.</li>
+<li><strong>Name Field (data type: Field)</strong> - The field within the feature class that has road names.</li>
+<li><strong>Suffix Field (data type: Field)</strong> - The field within the feature class that has or should have road suffixes.</li>
+</ol>
+</div>
+<div id="how-to-use-8" class="section level2">
+<h2><span class="header-section-number">11.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-8" class="section level3">
+<h3><span class="header-section-number">11.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Standardize 3 Address Fields’ script tool to open (Fig. <a href="#fig:std3open">11.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:std3open"></span>
+<img src="figures/std3-open.jpg" alt="Opening Standardize Road Prefix, Name, and Suffix tool" width="182"  />
+<p class="caption">
+Figure 11.1: Opening Standardize Road Prefix, Name, and Suffix tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-8" class="section level3">
+<h3><span class="header-section-number">11.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to update the road prefix, road name, and road suffix fields in the RoadCenterline_L feature class (Fig. <a href="#fig:std3params">11.2</a>). The fields can be derived directly from the Feature Class by using the drop-down menu.
+<div class="figure" style="text-align: center"><span id="fig:std3params"></span>
+<img src="figures/std3-toolparams.jpg" alt="Standardize Road Prefix, Name, and Suffix tool parameters" width="313"  />
+<p class="caption">
+Figure 11.2: Standardize Road Prefix, Name, and Suffix tool parameters
+</p>
+</div>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-8" class="section level2">
+<h2><span class="header-section-number">11.4</span> Run the Tool and View Results</h2>
+Before running the tool, we see that, indeed, the road prefixes and road suffixes are incorrectly populated inside the road name field Open the destinate Feature Class and view the update destination field values (Fig. <a href="#fig:std3before">11.3</a>).
+<div class="figure" style="text-align: center"><span id="fig:std3before"></span>
+<img src="figures/std3-before.jpg" alt="Unstandardized road prefixes, names, and suffixes before running the tool." width="161"  />
+<p class="caption">
+Figure 11.3: Unstandardized road prefixes, names, and suffixes before running the tool.
+</p>
+</div>
+After running the tool, we can see that the prefixes and suffixes have been populated in the correct fields, and have also been standardized to match USPS standards (Fig. <a href="#fig:std3after">11.4</a>).
+<div class="figure" style="text-align: center"><span id="fig:std3after"></span>
+<img src="figures/std3-after.jpg" alt="Standardized road prefixes, names, and suffixes after running the tool." width="144"  />
+<p class="caption">
+Figure 11.4: Standardized road prefixes, names, and suffixes after running the tool.
+</p>
+</div>
+
+</div>
+</div>
+<div id="indtSearch" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Search for Missing and Indeterminant Data</h1>
+<div id="overview-9" class="section level2">
+<h2><span class="header-section-number">12.1</span> Overview</h2>
+<p>Search a ‘source’ geodatabase for indeterminate data from feature dataset/feature class combinations in a target geodatabase. First, searches for missing feature datasets in target geodatabase not in source geodatabase. Then, searches for feature classes in ‘x’ feature dataset. Then, for each feature class in the source geodatabase, this tool searches for ‘indeterminate’ values in each field. Indeterminate values, here, means any null, to be determined (TBD), or ‘other’ values.</p>
+<p>This tool creates 4 output tables, each prepended with the name of the Model_Geodatabase (e.g.: If your ‘model’ geodatabase called ‘CIP’, the tables will be called (CIP_MissingFDS, CIP_Missing_FCs, CIP_MissingFields, and CIP_MissingData). These tables include:</p>
+<ul>
+<li>[modelGeodatabaseName]_MissingFDS - Gives a list of Feature Datasets within the target geodatabase that are not included in the source geodatabase.<br />
+</li>
+<li>[modelGeodatabaseName]_MissingFCs - Gives a list of Feature Classes for each Feature Dataset within the target geodatabase that are not included in the source geodatabase.<br />
+</li>
+<li>[modelGeodatabaseName]_MissingFields - Gives a list of Fields for each Feature Dataset/Feature Class combination within the target geodatabase that are not included in the source geodatabase.<br />
+</li>
+<li>[modelGeodatabaseName]_MissingData - For each Feature Dataset/Feature Class combination in both the target and source geodatabase, this table gives an overview of missing attributes for each field in the source geodatabase’s Feature Class.
+<ul>
+<li>For Fields in each of the source geodatabase’s Feature Classes, this table highlights fields not included in the target geodatabase’s Feature Class under the ‘FIELD_NONSDS’ column (e.g.: ‘FIELD_NONSDS’ = F when fields are included in both geodatabases, and ‘FIELD_NONSDS’ = T when the field exists in the source geodatabase for said Feature Class, but not the target geodatabase’s Feature Class).</li>
+<li>This table then lists whether or not the feature class is empty (i.e.: EMPTY_FC = T or F).</li>
+<li>Then, for each field, the MissingData table gives a count of Null<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, ‘TBD’<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>, and ‘Other’<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> features, further giving the counts of each value in ‘NULL_VALUE_COUNTS’, ‘TBD_VALUE_COUNTS’, and ‘OTHER_VALUE_COUNTS’ fields.</li>
+<li>The sum of the Null, TBD, and Other features are populated in the ‘TOTAL_INDT_COUNT’ (i.e.: Total indeterminant feature count), with the ‘TOTAL_DET_COUNT’ column giving the total number of features with ‘determinated’ values (i.e.: not indeterminant values).</li>
+<li>The POP_VALS column lists the count of all unique populated values for each field, while the INC_POP_VALS column lists any field values that are not included in the field’s domain.</li>
+</ul></li>
+</ul>
+</div>
+<div id="parameters-9" class="section level2">
+<h2><span class="header-section-number">12.2</span> Parameters</h2>
+<p>The tool has 2 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Source Geodatabase (data type: Workspace/File Geodatabase)</strong> - The path to the file geodatabase to be searched for indeterminant/missing data.</li>
+<li><strong>Target Geodatabase (data type: Workspace/File Geodatabase)</strong> - The path to the file geodatabase with which the source geodatabase will be compared against.</li>
+</ol>
+
+<div class="warnh1">
+Disclaimer!
+</div>
+ 
+<div class="warnp">
+This script tool currently requires an Advanced ArcGIS License!
+</div>
+
+</div>
+<div id="how-to-use-9" class="section level2">
+<h2><span class="header-section-number">12.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-9" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Search for Indeterminant Data’ script tool to open (Fig. <a href="#fig:indtSearchopen">12.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:indtSearchopen"></span>
+<img src="figures/indtSearch-open.jpg" alt="Opening the Search for Missing and Indeterminant Data tool" width="229"  />
+<p class="caption">
+Figure 12.1: Opening the Search for Missing and Indeterminant Data tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-9" class="section level3">
+<h3><span class="header-section-number">12.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to compare the ‘Example.gdb’ against the ‘CIP.gdb’ (Fig. <a href="#fig:indtSearchparams">12.2</a>). The fields can be derived directly from the Feature Class by using the drop-down menu.
+<div class="figure" style="text-align: center"><span id="fig:indtSearchparams"></span>
+<img src="figures/indtSearch-params.jpg" alt="Opening the Search for Missing and Indeterminant Data tool" width="414"  />
+<p class="caption">
+Figure 12.2: Opening the Search for Missing and Indeterminant Data tool
+</p>
+</div>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-9" class="section level2">
+<h2><span class="header-section-number">12.4</span> Run the Tool and View Results</h2>
+While we run the tool, we can see view the messages of the tool, giving a listing of the fields being searched for indeterminant data with the counts of indeterminant values (Fig. <a href="#fig:indtSearchmessages">12.3</a>).
+<div class="figure" style="text-align: center"><span id="fig:indtSearchmessages"></span>
+<img src="figures/indtSearch-messages.jpg" alt="Search for Missing and Indeterminant Data tool messages" width="374"  />
+<p class="caption">
+Figure 12.3: Search for Missing and Indeterminant Data tool messages
+</p>
+</div>
+After the tool has run, we can inspect the output tables within the ‘Example.gdb’ geodatabase (Fig. <a href="#fig:indtSearchtables">12.4</a>). Opening the CIP_MissingFDS table, we see that the Example geodatabase have no missing Feature Datasets <a href="#fig:indtSearchmissingFDS">12.5</a>).
+<div class="figure" style="text-align: center"><span id="fig:indtSearchtables"></span>
+<img src="figures/indtSearch-tables.jpg" alt="Search for Missing and Indeterminant Data output tables" width="106"  />
+<p class="caption">
+Figure 12.4: Search for Missing and Indeterminant Data output tables
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:indtSearchmissingFDS"></span>
+<img src="figures/indtSearch-missingFDS.jpg" alt="The output Missing Feature Datasets table" width="376"  />
+<p class="caption">
+Figure 12.5: The output Missing Feature Datasets table
+</p>
+</div>
+Examining the MissingFCs table, we see that the Example geodatabase has one Feature Class, RoadSeg_L from the Transportation Feature Dataset, missing when compared with the CIP geodatabase <a href="#fig:indtSearchmissingFCs">12.6</a>).
+<div class="figure" style="text-align: center"><span id="fig:indtSearchmissingFCs"></span>
+<img src="figures/indtSearch-missingFCs.jpg" alt="The output Missing Feature Classes table" width="333"  />
+<p class="caption">
+Figure 12.6: The output Missing Feature Classes table
+</p>
+</div>
+We can look at the MissingFLD table to see which fields are missing from each Feature Class from the target geodatabase that are included in the source geodatabase <a href="#fig:indtSearchmissingFLDs">12.7</a>).
+<div class="figure" style="text-align: center"><span id="fig:indtSearchmissingFLDs"></span>
+<img src="figures/indtSearch-missingFLDs.jpg" alt="The output Missing Feature Fields table" width="505"  />
+<p class="caption">
+Figure 12.7: The output Missing Feature Fields table
+</p>
+</div>
+To examine indeterminant field attribution, we can examine the MissingData table <a href="#fig:indtSearchmissingData">12.8</a>).
+<div class="figure" style="text-align: center"><span id="fig:indtSearchmissingData"></span>
+<img src="figures/indtSearch-missingData.jpg" alt="The output Missing Data table" width="600"  />
+<p class="caption">
+Figure 12.8: The output Missing Data table
+</p>
+</div>
+
+</div>
+</div>
+<div id="summIndt" class="section level1">
+<h1><span class="header-section-number">Chapter 13</span> Summarise Indeterminant/Missing Data Tables</h1>
+<div id="overview-10" class="section level2">
+<h2><span class="header-section-number">13.1</span> Overview</h2>
+<p>This tool takes the 4 tables created with the <a href="#indtSearch">Search for Missing and Indeterminant Data</a> tool and creates an outbook Excel Workbook which includes the following sheets:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Summary_by_FC</strong> - gives the counts and percentages of ‘Other’, ‘Null’, and ‘TBD’ cells by Feature Class, as well as the total counts and percentages of indeterminate (Other + Null + TBD) and determinate cells (not Other, Null, or TBD),</li>
+<li><strong>Summary_by_Field</strong> - gives the same statistics as the Summary_by_FC sheet, but broken down further by Feature Class Fields,</li>
+<li><strong>Empty Feature Classes</strong> - gives the standard Feature Classes in the comparison geodatabase not included in the input geodatabase(i.e.: Feature Classes included in comparison geodatabases)</li>
+<li><strong>Indeterminate_Overview</strong>, gives :
+<ul>
+<li>The total count of feature classes that are empty</li>
+<li>The total number of standard feature classes that are empty</li>
+<li>The source geodatabase installation name</li>
+<li>The total number of missing feature classes</li>
+<li>The total number of missing feature datasets</li>
+<li>The total number of empty fields from empty feature classes</li>
+<li>The total number of empty fields from non-empty feature classes.</li>
+</ul></li>
+</ol>
+</div>
+<div id="parameters-10" class="section level2">
+<h2><span class="header-section-number">13.2</span> Parameters</h2>
+<p>The inputs required for this tool to work are the 4 output tables created with the “Search for Indeterminate Data” script tool from one comparison geodatabase (<strong>repeat:</strong> ensure these are all from the same comparison geodatabase [i.e.: [comparison GDB] is the same across all four input tables]):</p>
+<ol style="list-style-type: decimal">
+<li><strong>comparisonGDBname_MissingFDS Table (data type: GDB Table)</strong> - The path to the MissingFDS table created with the <a href="#indtSearch">Search for Missing and Indeterminant Data</a> tool for one ‘target’ geodatabase.</li>
+<li><strong>comparisonGDBname_MissingFCs (data type: GDB Table)</strong> - The path to the MissingFCs table created with the <a href="#indtSearch">Search for Missing and Indeterminant Data</a> tool for one ‘target’ geodatabase.</li>
+<li><strong>comparisonGDBname_MissingFields (data type: GDB Table)</strong> - The path to the MissingFields table created with the <a href="#indtSearch">Search for Missing and Indeterminant Data</a> tool for one ‘target’ geodatabase.</li>
+<li><strong>comparisonGDBname_MissingData (data type: GDB Table)</strong> - The path to the MissingData table created with the <a href="#indtSearch">Search for Missing and Indeterminant Data</a> tool for one ‘target’ geodatabase.</li>
+<li><strong>Output Excel File’ (data type: .xlsx file)</strong> - The path to the output Excel Workbook to save the summary sheets to.</li>
+</ol>
+
+<div class="warnh1">
+Disclaimer!
+</div>
+ 
+<div class="warnp">
+<p>This script tool requires a few non-standard ArcGIS 10.x Python modules: <a href="http://www.numpy.org/">numpy</a> and <a href="https://pandas.pydata.org/">pandas</a>. To install these modules for use in ArcGIS, you can download and install the modules using the commands “pip install pandas” and “pip install numpy.”</p>
+<p>To do this, follow these instructions:</p>
+<ol style="list-style-type: decimal">
+<li>Press the windows key on your keyboard</li>
+<li>Type “cmd” to open the command prompt window</li>
+<li>Set your working directory to the ArcGIS Python directory with the ‘pip’ command (e.g.: if you are running ArcMap10.6, input: “C:/Python27/ArcGIS10.6/Scripts”)</li>
+<li>Type ‘pip install numpy’ and press enter, then type ‘pip install pandas’ and press enter. If all goes well, you will have these modules successfully installed for use in ArcGIS’ Python distribution</li>
+</ol>
+</div>
+
+</div>
+<div id="how-to-use-10" class="section level2">
+<h2><span class="header-section-number">13.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-10" class="section level3">
+<h3><span class="header-section-number">13.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Summarise Indeterminant Data Tables’ script tool to open (Fig. <a href="#fig:summIndtopen">13.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:summIndtopen"></span>
+<img src="figures/summIndt-open.jpg" alt="Opening the Summarise Indeterminant Data Tables tool" width="220"  />
+<p class="caption">
+Figure 13.1: Opening the Summarise Indeterminant Data Tables tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-10" class="section level3">
+<h3><span class="header-section-number">13.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to summarise the Indeterminant Data Tables created in the Example.gdb that was created when comparing against the CIP geodatabase. Again, be sure that these input tables all derive from the same target geodatabase!
+<div class="figure" style="text-align: center"><span id="fig:summIndtparams"></span>
+<img src="figures/summIndt-toolparams.jpg" alt="Setting the parameters for the Summarise Indeterminant Data Tables tool " width="430"  />
+<p class="caption">
+Figure 13.2: Setting the parameters for the Summarise Indeterminant Data Tables tool
+</p>
+</div>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-10" class="section level2">
+<h2><span class="header-section-number">13.4</span> Run the Tool and View Results</h2>
+While we run the tool, we can see view the messages of the tool (Fig. <a href="#fig:summIndtmessages">13.3</a>).
+<div class="figure" style="text-align: center"><span id="fig:summIndtmessages"></span>
+<img src="figures/summIndt-messages.jpg" alt="Opening the Delete Duplicate Features tool" width="373"  />
+<p class="caption">
+Figure 13.3: Opening the Delete Duplicate Features tool
+</p>
+</div>
+After the tool has run, we can open the output Excel Workbook we specified to see the 4 output sheets : Summary_by_FC, Summary_by_Field, Empty Feature Classes, and Indeterminate_Overview (Fig. <a href="#fig:summIndtsheets">13.4</a>).
+<div class="figure" style="text-align: center"><span id="fig:summIndtsheets"></span>
+<img src="figures/summIndt-sheets.jpg" alt="The output Excel Workbook sheets Summary by FC, Summary by Field, Empty Feature Classes, and Indeterminate Overview" width="362"  />
+<p class="caption">
+Figure 13.4: The output Excel Workbook sheets Summary by FC, Summary by Field, Empty Feature Classes, and Indeterminate Overview
+</p>
+</div>
+Viewing the Summary_by_FC sheets gives us a comprehensive overview of the counts and percentages of indeterminant Attribute Table cells by indeterminant data type (i.e.: Null, TBD, and Other) (Fig. <a href="#fig:summIndtsheet1">13.5</a>).
+<div class="figure" style="text-align: center"><span id="fig:summIndtsheet1"></span>
+<img src="figures/summIndt-sheet1.jpg" alt="The output Summary by Feature Class table" width="80%"  />
+<p class="caption">
+Figure 13.5: The output Summary by Feature Class table
+</p>
+</div>
+The Summary_by_Field provides provides a breaks down of the Summary_by_FC table by field (Fig. <a href="#fig:summIndtsheet2">13.6</a>).
+<div class="figure" style="text-align: center"><span id="fig:summIndtsheet2"></span>
+<img src="figures/summIndt-sheet2.jpg" alt="The output Summary by Field table" width="80%"  />
+<p class="caption">
+Figure 13.6: The output Summary by Field table
+</p>
+</div>
+The Empty Feature Classes sheet provides a listing of the Feature Classes included in the Example.gdb that are empty, as well as the empty fields from those empty feature classes (Fig. <a href="#fig:summIndtsheet3">13.7</a>).
+<div class="figure" style="text-align: center"><span id="fig:summIndtsheet3"></span>
+<img src="figures/summIndt-sheet3.jpg" alt="The output Empty Feature Classes table" width="352"  />
+<p class="caption">
+Figure 13.7: The output Empty Feature Classes table
+</p>
+</div>
+Lastly, the Indeterminate_Overview sheet provides a general overview of missing and indeterminant data at a geodatabase level (Fig. <a href="#fig:summIndtsheet4">13.8</a>).
+<div class="figure" style="text-align: center"><span id="fig:summIndtsheet4"></span>
+<img src="figures/summIndt-sheet4.jpg" alt="The output Indeterminate Overview table" width="544"  />
+<p class="caption">
+Figure 13.8: The output Indeterminate Overview table
+</p>
+</div>
+
+</div>
+</div>
+<div id="exMeta" class="section level1">
+<h1><span class="header-section-number">Chapter 14</span> Batch Export XML Metadata to Directory</h1>
+<div id="overview-11" class="section level2">
+<h2><span class="header-section-number">14.1</span> Overview</h2>
+<p>This tool provides an automated method to export metadata for each Feature Dataset and Feature Class (within Feature Datasets) in the input geodatabase, by exporting each item’s metadata to an .xml file to an output directory, as specified. This tool allows you to specify a metadata translator. Within the scope of the Department of Defense Instruction (DoDI) 8130.01, it is recommended that you download and install the SDSFIE-M Metadata Style for ArcGIS from <a href="https://www.sdsfieonline.org/Standards/Metadata">The Spatial Data Standards for Facilities, Infrastructure, and Environment (SDSFIE) Metadata standard</a>. In this case, you would change the input the metadata translator to the ARCGIS2SDSFIE-M.xml<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> provided with the SDSFIE-M Metadata Style for ArcGIS software.^[Be sure to install the software to the software path for your ArcGIS distribution currently installed to view this metadata style within ArcCatalog, for example: “C:/Program Files (x86)/ArcGIS/Desktop10.X/”</p>
+<p>If the source metadata is a Feature Dataset, the output .xml file is named after the Feature Dataset. Alternatively, the output .xml metadata for Feature Classes are exported with the Feature Dataset name prepended before the Feature Class name.</p>
+<p>These output .xml files can more easily be edited in batch using the <a href="http://insideidaho.org/helpdocs/batch_metadata_modifier_tool.html">Batch Metadata Modifier Tool</a> developed out of the University of Idaho’s Interactive Numeric &amp; Spatial Information Data Engine (INSIDE) geospatial data clearinghouse.</p>
+</div>
+<div id="parameters-11" class="section level2">
+<h2><span class="header-section-number">14.2</span> Parameters</h2>
+<p>The tool has 3 parameters:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Input Geodatabase (data type: Workspace/File Geodatabase)</strong> - The input geodatabase to export Feature Dataset/Feature Class metadata from.</li>
+<li><strong>Metadata Translator (data type: .XML file)</strong> - The metadata translator to be used to create output .xml metadata files. These files are typically located at “C:/Program Files (x86)/ArcGIS/[Desktop10.x]/Metadata/Translator/. Please change according to your ArcGIS installation file path.</li>
+<li><strong>Output Directory (data type: Folder)</strong> - The folder within which to write output .xml metadata files.</li>
+</ol>
+</div>
+<div id="how-to-use-11" class="section level2">
+<h2><span class="header-section-number">14.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-11" class="section level3">
+<h3><span class="header-section-number">14.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Batch Export Metadata to Directory’ script tool to open (Fig. <a href="#fig:exMetaopen">14.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:exMetaopen"></span>
+<img src="figures/exMeta-open.jpg" alt="Opening the Batch Export Metadata tool" width="214"  />
+<p class="caption">
+Figure 14.1: Opening the Batch Export Metadata tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-11" class="section level3">
+<h3><span class="header-section-number">14.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to export metadata for all Feature Datasets and all Feature Classes (within those Feature Datasets) within the Example.gdb geodatabase using the default ARCGIS2FGDC metadata translator that comes with ArcGIS to a new directory called ‘metadata’ (Fig. <a href="#fig:exMetaparams">14.2</a>).
+<div class="figure" style="text-align: center"><span id="fig:exMetaparams"></span>
+<img src="figures/exMeta-params.jpg" alt="Batch Export Metadata tool parameters" width="432"  />
+<p class="caption">
+Figure 14.2: Batch Export Metadata tool parameters
+</p>
+</div>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-11" class="section level2">
+<h2><span class="header-section-number">14.4</span> Run the Tool and View Results</h2>
+<p>After running the tool, we can view the output metadata files inside the output directory specified (Fig. <a href="#fig:exMetaafter">14.3</a>). For Feature Classes, the output .xml files has the associated Feature Dataset name prepended to the filename, while Feature Dataset metadata file is simply the name of the Feature Dataset.</p>
+<div class="figure" style="text-align: center"><span id="fig:exMetaafter"></span>
+<img src="figures/exMeta-after.jpg" alt="Batch Export Metadata output .xml files for each Feature Dataset/Feature Class" width="378"  />
+<p class="caption">
+Figure 14.3: Batch Export Metadata output .xml files for each Feature Dataset/Feature Class
+</p>
+</div>
+
+</div>
+</div>
+<div id="imMeta" class="section level1">
+<h1><span class="header-section-number">Chapter 15</span> Batch Import Metadata to GDB Features from XML Metadata Directory</h1>
+<div id="overview-12" class="section level2">
+<h2><span class="header-section-number">15.1</span> Overview</h2>
+<p>This tool provides an automated method to import metadata for each Feature Dataset and Feature Class (within Feature Datasets) in the input geodatabase, following the output .xml file naming convention created with the [Batch Export Metadata] tool, and potentially updated using the <a href="http://insideidaho.org/helpdocs/batch_metadata_modifier_tool.html">Batch Metadata Modifier Tool</a> developed out of the University of Idaho’s Interactive Numeric &amp; Spatial Information Data Engine (INSIDE) geospatial data clearinghouse. As per SDSFIE standards, it is recommended that you view this metadata using the <a href="https://www.sdsfieonline.org/Standards/Metadata">SDSFIE-M Metadata Style for ArcGIS</a><a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</p>
+<p>Alternatively, if you wish to import metadata from Feature Classes in a Esri geodatabase, you should use the [Batch Import Metadata from GDB] tool.</p>
+</div>
+<div id="parameters-12" class="section level2">
+<h2><span class="header-section-number">15.2</span> Parameters</h2>
+<p>The tool has 2 parameters<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Input Geodatabase (data type: Workspace/File Geodatabase)</strong> - The input geodatabase to export Feature Dataset/Feature Class metadata from.</li>
+<li><strong>Input Metadata Directory (data type: Folder)</strong> - The folder with the .xml files to import into the geodatabase features.</li>
+</ol>
+</div>
+<div id="how-to-use-12" class="section level2">
+<h2><span class="header-section-number">15.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-12" class="section level3">
+<h3><span class="header-section-number">15.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Batch Import Metadata’ script tool to open (Fig. <a href="#fig:imMetaopen">15.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:imMetaopen"></span>
+<img src="figures/imMeta-open.jpg" alt="Opening the Batch Import Metadata tool" width="264"  />
+<p class="caption">
+Figure 15.1: Opening the Batch Import Metadata tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-12" class="section level3">
+<h3><span class="header-section-number">15.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to export metadata for all Feature Datasets and all Feature Classes (within those Feature Datasets) within the Example.gdb geodatabase using the default ARCGIS2FGDC metadata translator that comes with ArcGIS to a new directory called ‘metadata’ (Fig. <a href="#fig:imMetaparams">15.2</a>).
+<div class="figure" style="text-align: center"><span id="fig:imMetaparams"></span>
+<img src="figures/imMeta-params.jpg" alt="Batch Import Metadata tool parameters" width="369"  />
+<p class="caption">
+Figure 15.2: Batch Import Metadata tool parameters
+</p>
+</div>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-12" class="section level2">
+<h2><span class="header-section-number">15.4</span> Run the Tool and View Results</h2>
+While the tool runs, we can see which .xml files are being imported to each Feature Dataset’s/Feature Class’ metadata, as well as which Feature Datasets/Feature Classes do not have matching .xml files in the output directory (Fig. <a href="#fig:imMetamessages">15.3</a>).
+<div class="figure" style="text-align: center"><span id="fig:imMetamessages"></span>
+<img src="figures/imMeta-messages.jpg" alt="Batch Import Metadata tool messages" width="374"  />
+<p class="caption">
+Figure 15.3: Batch Import Metadata tool messages
+</p>
+</div>
+<p>After running the tool, we can view the update Item Descriptions for the Feature Classes and Feature Datasets imported with the .xml files (Fig. <a href="#fig:imMetaafter">15.4</a>). You can also change the way ArcMap displays the metadata by going to Customize &gt; ArcMap Options in ArcMap, then clicking the Metadata tab and changing the Metadata Style in the drop-down menu. You can find more information on Item Descriptions on Esri’s <a href="http://desktop.arcgis.com/en/arcmap/latest/map/working-with-arcmap/documenting-items-in-the-catalog-window.htm">Item Desecription Help Page</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:imMetaafter"></span>
+<img src="figures/imMeta-after.jpg" alt="Opening the Item Description to view updated Metadata" width="218"  />
+<p class="caption">
+Figure 15.4: Opening the Item Description to view updated Metadata
+</p>
+</div>
+
+</div>
+</div>
+<div id="imMetaGDB" class="section level1">
+<h1><span class="header-section-number">Chapter 16</span> Batch Import Metadata to GDB Features from GDB</h1>
+<div id="overview-13" class="section level2">
+<h2><span class="header-section-number">16.1</span> Overview</h2>
+<p>This tool provides an automated method to import metadata for each Feature Dataset and Feature Class (within Feature Datasets) in the input geodatabase from a source geodatabase. This tool different from the [Batch Import Metadata] tool because it imports metadata from a source geodatabase and not from a directory of metadata .xml files.</p>
+</div>
+<div id="parameters-13" class="section level2">
+<h2><span class="header-section-number">16.2</span> Parameters</h2>
+<p>The tool has 3 parameters<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a>:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Source Geodatabase (data type: Workspace/File Geodatabase)</strong> - The input geodatabase to export Feature Dataset/Feature Class metadata from.</li>
+<li><strong>Target Geodatabase (data type: Workspace/File Geodatabase)</strong> - The geodatabase to input metadata from the Source Geodatabase from.</li>
+<li><strong>Sync Type (data type: String)</strong> - How would you like the metadata items to be Syncronized upon import?<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a>
+<ul>
+<li><em>ALWAYS</em> — Properties of the source item are always added to or updated in its metadata. Metadata will be created if it doesn’t already exist. This is the deault.</li>
+<li><em>ACCESSED</em> — Properties of the source item are added to or updated in its metadata when it is accessed. Metadata will be created if it doesn’t already exist.</li>
+<li><em>CREATED</em> — Metadata will be created and properties of the source item will be added to it if the item doesn’t already have metadata.</li>
+<li><em>NOT_CREATED</em> — Properties of the source item are added to or updated in existing metadata.</li>
+<li><em>OVERWRITE</em> — The same as “ALWAYS” except all information that can be recorded automatically in the metadata will be recorded. Any properties typed in by a person will be replaced with the item’s actual properties.</li>
+<li><em>SELECTIVE</em> — The same as “OVERWRITE” except the title and the content type will not be overwritten with default values for the item. Used when metadata is upgraded to the ArcGIS 10.x metadata format.</li>
+</ul></li>
+</ol>
+</div>
+<div id="how-to-use-13" class="section level2">
+<h2><span class="header-section-number">16.3</span> How to Use</h2>
+<div id="begin-by-opening-the-toolbox-13" class="section level3">
+<h3><span class="header-section-number">16.3.1</span> Begin by opening the toolbox</h3>
+Navigate to the location of the script toolbox, then right-click the ‘Batch Import Metadata to Geodatabase from GDB’ script tool to open (Fig. <a href="#fig:imMetaopen">15.1</a>).
+<div class="figure" style="text-align: center"><span id="fig:imMetaArcopen"></span>
+<img src="figures/imMetaArc-open.jpg" alt="Opening the Batch Import Metadata tool" width="258"  />
+<p class="caption">
+Figure 16.1: Opening the Batch Import Metadata tool
+</p>
+</div>
+</div>
+<div id="fill-out-the-parameters-13" class="section level3">
+<h3><span class="header-section-number">16.3.2</span> Fill out the parameters</h3>
+Next, fill out the parameters for the tool. Here, we want to import metadata from the geodatabas with metadata to the geodatabase without metadata.
+<div class="figure" style="text-align: center"><span id="fig:imMetaArcparams"></span>
+<img src="figures/imMetaArc-params.jpg" alt="Batch Import Metadata tool parameters" width="460"  />
+<p class="caption">
+Figure 16.2: Batch Import Metadata tool parameters
+</p>
+</div>
+</div>
+</div>
+<div id="run-the-tool-and-view-results-13" class="section level2">
+<h2><span class="header-section-number">16.4</span> Run the Tool and View Results</h2>
+While the tool runs, we can see which geodatabase Feature Datasets/Feature Classes are being imported to each Feature Dataset’s/Feature Class’ metadata, as well as which Feature Datasets/Feature Classes do not have matching .xml files in the source geodatabase (Fig. <a href="#fig:imMetaArcmessages">16.3</a>).
+<div class="figure" style="text-align: center"><span id="fig:imMetaArcmessages"></span>
+<img src="figures/imMetaArc-messages.jpg" alt="Batch Import Metadata tool messages" width="373"  />
+<p class="caption">
+Figure 16.3: Batch Import Metadata tool messages
+</p>
+</div>
+<p>After running the tool, we can view the update Item Descriptions for the Feature Classes and Feature Datasets imported from the source geodatabase (Fig. <a href="#fig:imMetaArcafter">16.4</a>). If importing SDSFIE-M metadata, it is recommended that you alter the way ArcMap displays the metadata by going to Customize &gt; ArcMap Options in ArcMap, then clicking the Metadata tab and changing the Metadata Style in the drop-down menu. To do this, you must view this metadata using the <a href="https://www.sdsfieonline.org/Standards/Metadata">SDSFIE-M Metadata Style for ArcGIS</a><a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a>. After doing this, we can view the SDSFIE-M metadata style within ArcCatalog.</p>
+<p>You can find more information on Item Descriptions on Esri’s <a href="http://desktop.arcgis.com/en/arcmap/latest/map/working-with-arcmap/documenting-items-in-the-catalog-window.htm">Item Desecription Help Page</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:imMetaArcafter"></span>
+<img src="figures/imMetaArc-after.jpg" alt="Opening the Item Description to view updated Metadata" width="80%"  />
+<p class="caption">
+Figure 16.4: Opening the Item Description to view updated Metadata
+</p>
+</div>
+
+</div>
+</div>
+<div id="prodInfo" class="section level1">
+<h1><span class="header-section-number">Chapter 17</span> Production Information</h1>
+<p>This report was created using R <span class="citation">(R Core Team <a href="#ref-R-base">2017</a>)</span> and RStudio <span class="citation">(RStudio Team <a href="#ref-Rstudio">2015</a>)</span> with the following packages:</p>
+<ul>
+<li>bookdown <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a><a href="#ref-R-bookdown">a</a>)</span></li>
+<li>knitr <span class="citation">(Xie <a href="#ref-R-knitr">2018</a><a href="#ref-R-knitr">b</a>)</span></li>
+<li>rmarkdown <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2017</a>)</span></li>
+<li>tinytex <span class="citation">(Xie <a href="#ref-R-tinytex">2018</a><a href="#ref-R-tinytex">c</a>)</span></li>
+</ul>
+<p>For posterity, package information is listed below:</p>
+<pre><code>## R version 3.4.1 (2017-06-30)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 10 x64 (build 16299)
+## 
+## Matrix products: default
+## 
+## locale:
+## [1] LC_COLLATE=English_United States.1252 
+## [2] LC_CTYPE=English_United States.1252   
+## [3] LC_MONETARY=English_United States.1252
+## [4] LC_NUMERIC=C                          
+## [5] LC_TIME=English_United States.1252    
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] tinytex_0.5      knitr_1.20       rmarkdown_1.9.12 bookdown_0.7.8  
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_0.12.16    digest_0.6.15   rprojroot_1.3-2 backports_1.1.2
+##  [5] magrittr_1.5    evaluate_0.10.1 highr_0.6       stringi_1.1.7  
+##  [9] rstudioapi_0.7  tools_3.4.1     stringr_1.3.0   jpeg_0.1-8     
+## [13] xfun_0.1        yaml_2.1.18     compiler_3.4.1  htmltools_0.3.6</code></pre>
+
+<div id="refs" class="references">
+<div id="ref-R-rmarkdown">
+<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2017. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+</div>
+<div id="ref-R-base">
+<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-Rstudio">
+<p>RStudio Team. 2015. <em>RStudio: Integrated Development Environment for R</em>. Boston, MA: RStudio, Inc. <a href="http://www.rstudio.com/" class="uri">http://www.rstudio.com/</a>.</p>
+</div>
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2018a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
+</div>
+<div id="ref-R-knitr">
+<p>———. 2018b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
+</div>
+<div id="ref-R-tinytex">
+<p>———. 2018c. <em>Tinytex: Helper Functions to Install and Maintain ’Tex Live’, and Compile ’Latex’ Documents</em>. <a href="https://CRAN.R-project.org/package=tinytex" class="uri">https://CRAN.R-project.org/package=tinytex</a>.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Null values include :None, “None”, “none”, “NONE”, “”,“-99999”,“77777”,77777, &quot; “,”NA“,”na“,”N/A“,”n/a“,”NULL“,”Null“,”<NULL>“,”null“,”<null>“”<Null>“,” “,” “,” “,” “<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>TBD values include : “tbd”,“TBD”,“To be determined”,“Tbd”,99999,“99999”<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>Other values include : “Other”, “other”, “OTHER”,“88888”,88888<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>Under standard Windows installations, this should be located at “C:/Program Files (x86)/ArcGIS/Desktop10.6/Metadata/Translator/ARCGIS2SDSFIE-M.xml”.<a href="#fnref4">↩</a></p></li>
+<li id="fn5"><p>When installing this tool, be sure to install it to the location of your current ArcGIS distribution on your computer, typically located at C:/Program Files (x86)/ArcGIS/Desktop10.6/, replacing with the approproate ArcGIS version<a href="#fnref5">↩</a></p></li>
+<li id="fn6"><p>More information may be found on the help page for ArcMap’s <a href="http://desktop.arcgis.com/en/arcmap/latest/tools/conversion-toolbox/metadata-importer.htm">Metadata Importer</a>.<a href="#fnref6">↩</a></p></li>
+<li id="fn7"><p>More information of the Import Type and Auto Update parameters may be found at the help page for ArcMap’s <a href="http://desktop.arcgis.com/en/arcmap/latest/tools/conversion-toolbox/import-metadata.htm">Import Metadata Tool</a>.<a href="#fnref7">↩</a></p></li>
+<li id="fn8"><p>More information on Sync Type paramters may be found at the help file for the <a href="http://desktop.arcgis.com/en/arcmap/latest/tools/conversion-toolbox/synchronize-metadata.htm">Synchronize Metadata function</a><a href="#fnref8">↩</a></p></li>
+<li id="fn9"><p>When installing this tool, be sure to install it to the location of your current ArcGIS distribution on your computer, typically located at C:/Program Files (x86)/ArcGIS/Desktop10.6/, replacing with the approproate ArcGIS version<a href="#fnref9">↩</a></p></li>
+</ol>
+</div>
+<p style="text-align: center;">
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>
