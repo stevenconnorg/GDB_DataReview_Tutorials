@@ -15,6 +15,8 @@ linestretch: 1.25
 classoption: openany
 description: "How to use the ArcMap GDB_DataReview Toolbox."
 ---
+
+
 ```{r include=FALSE}
 library(bookdown)
 library(rmarkdown)
@@ -30,6 +32,8 @@ knitr::opts_chunk$set(fig.pos = 'H')
 library(knitr)
 #opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 opts_chunk$set(fig.retina=2,dpi=96,out.extra='')
+
+# bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 ```
 
 # Toolbox Overview {#overview}
